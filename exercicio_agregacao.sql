@@ -4,7 +4,8 @@ INSERT INTO clientes (id_cliente, nome, cidade, uf) VALUES
 (2, 'Bruno Oliveira', 'Belo Horizonte', 'MG'),
 (3, 'Carla Souza', 'Curitiba', 'PR'),
 (4, 'Diego Santos', 'Rio de Janeiro', 'RJ'),
-(5, 'Elena Rocha', 'Porto Alegre', 'RS');
+(5, 'Elena Rocha', 'Porto Alegre', 'RS')
+  COMMIT;
 
 -- Inserindo Vendas--
 INSERT INTO vendas (id_vendas, id_cliente, valor, data_venda) VALUES
@@ -13,8 +14,8 @@ INSERT INTO vendas (id_vendas, id_cliente, valor, data_venda) VALUES
 (103, 2, 450.00, '2025-11-05'),
 (104, 1, 120.00, '2025-11-10'),
 (105, 5, 310.25, '2025-11-12'),
-(106, 4, 55.00, '2025-11-15');
-commit
+(106, 4, 55.00, '2025-11-15')
+COMMIT;
 
 -- Retorno do nome dos clientes e valor de vendas, para vendas no estado do RJ maiores que R$100,00.
 select c.nome,v.valor 
@@ -22,7 +23,7 @@ from clientes c inner join vendas v on
 (v.id_cliente=c.id_cliente)
 where c.uf = 'RJ' and v.valor > 100
 ;
-commit
+
 
 -- Todas as vendas que não foram realizadas no estado de SP com valor menor ou igual a R$100,00.
 select v.id_vendas,v.data_venda 
@@ -35,6 +36,6 @@ SELECT c.uf, SUM(v.valor) AS Total_Vendas
 FROM vendas v INNER JOIN clientes c ON v.id_cliente = c.id_cliente
 GROUP BY c.uf;
 
-commit
+
 
 
